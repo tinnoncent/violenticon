@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 360" role="img" aria-labelledby="title desc">
+  <title id="title">VIOLENT ICON chromatic 3D wordmark</title>
+  <desc id="desc">A wide transparent wordmark with offset cyan and red ghost layers, blur, scanline texture, and a sharp ivory center layer.</desc>
+
+  <defs>
+    <filter id="soft-red" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+
+    <filter id="soft-cyan" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+
+    <filter id="micro-glow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="2.25" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="scanlines" width="8" height="8" patternUnits="userSpaceOnUse">
+      <rect width="8" height="4" fill="#000" opacity="0"/>
+      <rect y="4" width="8" height="4" fill="#000" opacity=".20"/>
+    </pattern>
+
+    <linearGradient id="ivory" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf5"/>
+      <stop offset=".42" stop-color="#efe7d3"/>
+      <stop offset="1" stop-color="#bcb39f"/>
+    </linearGradient>
+
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#39f7ff"/>
+      <stop offset=".48" stop-color="#e9e0ca"/>
+      <stop offset="1" stop-color="#ff334f"/>
+    </linearGradient>
+
+    <clipPath id="wordmark-clip">
+      <text x="800" y="232"
+            text-anchor="middle"
+            font-family="Arial Black, Helvetica Neue, Helvetica, Arial, sans-serif"
+            font-size="142"
+            font-weight="900"
+            letter-spacing="27">VIOLENT ICON</text>
+    </clipPath>
+  </defs>
+
+  <!-- Diffused chromatic atmosphere -->
+  <g opacity=".58">
+    <text x="786" y="232"
+          text-anchor="middle"
+          font-family="Arial Black, Helvetica Neue, Helvetica, Arial, sans-serif"
+          font-size="142"
+          font-weight="900"
+          letter-spacing="27"
+          fill="#24eaff"
+          filter="url(#soft-cyan)">VIOLENT ICON</text>
+
+    <text x="814" y="232"
+          text-anchor="middle"
+          font-family="Arial Black, Helvetica Neue, Helvetica, Arial, sans-serif"
+          font-size="142"
+          font-weight="900"
+          letter-spacing="27"
+          fill="#ff2d43"
+          filter="url(#soft-red)">VIOLENT ICON</text>
+  </g>
+
+  <!-- Hard offset 3D ghosts -->
+  <text x="784" y="232"
+        text-anchor="middle"
+        font-family="Arial Black, Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="142"
+        font-weight="900"
+        letter-spacing="27"
+        fill="#17e6f4"
+        opacity=".82">VIOLENT ICON</text>
+
+  <text x="816" y="232"
+        text-anchor="middle"
+        font-family="Arial Black, Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="142"
+        font-weight="900"
+        letter-spacing="27"
+        fill="#ff2946"
+        opacity=".82">VIOLENT ICON</text>
+
+  <!-- Sharp core -->
+  <text x="800" y="232"
+        text-anchor="middle"
+        font-family="Arial Black, Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="142"
+        font-weight="900"
+        letter-spacing="27"
+        fill="url(#ivory)"
+        stroke="#070707"
+        stroke-width="3"
+        paint-order="stroke fill"
+        filter="url(#micro-glow)">VIOLENT ICON</text>
+
+  <!-- Fine chromatic edge -->
+  <text x="800" y="232"
+        text-anchor="middle"
+        font-family="Arial Black, Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="142"
+        font-weight="900"
+        letter-spacing="27"
+        fill="none"
+        stroke="url(#edge)"
+        stroke-width="1.4"
+        opacity=".9">VIOLENT ICON</text>
+
+  <!-- Scanline interference contained to letters -->
+  <rect x="0" y="70" width="1600" height="210"
+        fill="url(#scanlines)"
+        clip-path="url(#wordmark-clip)"
+        opacity=".75"/>
+
+  <!-- Small tracking marks -->
+  <g fill="#e9e0ca" opacity=".72">
+    <rect x="112" y="279" width="180" height="2"/>
+    <rect x="1308" y="279" width="180" height="2"/>
+  </g>
+  <g font-family="Courier New, monospace" font-size="18" letter-spacing="5" fill="#e9e0ca" opacity=".7">
+    <text x="112" y="316">BEAUTIFUL THINGS</text>
+    <text x="1488" y="316" text-anchor="end">BAD INTENTIONS</text>
+  </g>
+</svg>

@@ -14,3 +14,5 @@ Preserved unchanged:
 - Cyan Baphomet sigil
 - Rainbow/spectral bands
 - CRT scanlines, grain, vignette, sync tear, boot sequence, telemetry, animations, layout, and interactions
+
+UPDATE: Replaced the text VIOLENT ICON heading with the supplied chromatic SVG wordmark only. All other page elements remain unchanged.
