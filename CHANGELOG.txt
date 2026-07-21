@@ -1,0 +1,37 @@
+VIOLENT ICON FRONT PAGE — CHANGELOG
+
+BASELINE PRESERVED
+- Cyan animated Baphomet pentagram
+- Rainbow bands
+- Scanlines
+- Grain
+- Sync roll
+- Vignette
+- Chromatic fringe
+- Background particle field
+- Mobile behavior
+- Fourthwall iframe resizing
+
+EXPLICIT CHANGES ONLY
+1. Wordmark:
+   FROM: S6N6FG6D / blackletter
+   TO:   ＶＩＯＬＥＮＴ　ＩＣＯＮ / clean tracked sans-serif
+
+2. Hero copy:
+   FROM: Corrupted Goods / related legacy tagline
+   TO:
+   ＢＥＡＵＴＩＦＵＬ　ＴＨＩＮＧＳ
+   ＢＡＤ　ＩＮＴＥＮＴＩＯＮＳ
+
+3. CTA:
+   TO:
+   ＳＨＯＰ　ＴＨＥ　ＤＲＯＰ
+
+4. Browser metadata:
+   Updated to VIOLENT ICON.
+
+NOT CHANGED
+- The pentagram was not removed.
+- The established animation system was not removed.
+- The rainbow effects were not removed.
+- The cyan neon identity was not removed.
