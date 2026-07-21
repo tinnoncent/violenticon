@@ -344,8 +344,14 @@ body.pulse .identity{animation:identityGlitch .34s steps(2) both}
 @media (max-width:520px){
   .hero{grid-template-rows:auto 1fr auto auto}
   .status{font-size:8px;letter-spacing:.16em}
-  .identity{transform:translateY(1.5vh);gap:13px}
-  .manifesto{letter-spacing:.18em}
+  .identity{width:100%;transform:translateY(1.5vh);gap:8px}
+  .sigil{transform:translateY(-10px)}
+  h1{
+    width:100%;
+    font-size:clamp(26px,7.2vw,31px);
+    letter-spacing:-.03em;
+  }
+  .manifesto{gap:2px;letter-spacing:.18em;line-height:1.28}
   .drop-button{padding:15px 22px;letter-spacing:.22em;margin-bottom:12px}
   .microcopy{font-size:6.5px;letter-spacing:.12em}
   body.pulse .identity{animation:none}
