@@ -1,100 +1,96 @@
 (() => {
   "use strict";
 
-  const canvas = document.getElementById("field");
-  const ctx = canvas?.getContext("2d");
-  const wordmark = document.querySelector(".wordmark");
+  const SHOP_URL = "https://violenticon.com/collections/all";
+  const body = document.body;
+  const video = document.querySelector(".world-video");
+  const button = document.getElementById("dropButton");
+  const status = document.getElementById("statusText");
 
-  let width = 0;
-  let height = 0;
-  let dpr = 1;
-  let motes = [];
+  button.href = SHOP_URL;
 
-  const resizeCanvas = () => {
-    if (!canvas || !ctx) return;
+  const states = [
+    "TX-00 // SIGNAL LOCKED",
+    "TX-06 // WATER IN SYSTEM",
+    "TX-66 // UNAUTHORIZED",
+    "TX-09 // LUXURY FAILURE"
+  ];
+  status.textContent = states[Math.floor(Math.random() * states.length)];
 
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-
-    canvas.width = Math.floor(width * dpr);
-    canvas.height = Math.floor(height * dpr);
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-    const count = Math.max(22, Math.min(72, Math.round((width * height) / 27000)));
-    motes = Array.from({ length: count }, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      size: Math.random() * 1.25 + 0.25,
-      speed: Math.random() * 0.13 + 0.025,
-      drift: (Math.random() - 0.5) * 0.05,
-      alpha: Math.random() * 0.22 + 0.04
-    }));
-  };
-
-  const drawField = () => {
-    if (!canvas || !ctx) return;
-
-    ctx.clearRect(0, 0, width, height);
-
-    for (const mote of motes) {
-      mote.y -= mote.speed;
-      mote.x += mote.drift;
-
-      if (mote.y < -4) {
-        mote.y = height + 4;
-        mote.x = Math.random() * width;
-      }
-
-      if (mote.x < -4) mote.x = width + 4;
-      if (mote.x > width + 4) mote.x = -4;
-
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(0, 229, 255, ${mote.alpha})`;
-      ctx.arc(mote.x, mote.y, mote.size, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    requestAnimationFrame(drawField);
-  };
-
-  const glitch = () => {
-    if (!wordmark) return;
-    wordmark.classList.add("is-glitching");
-    window.setTimeout(() => wordmark.classList.remove("is-glitching"), 520);
-  };
-
-  const scheduleGlitch = () => {
-    const delay = 5200 + Math.random() * 4200;
+  let revealed = false;
+  const reveal = () => {
+    if (revealed) return;
+    revealed = true;
     window.setTimeout(() => {
-      glitch();
-      scheduleGlitch();
-    }, delay);
+      body.classList.remove("is-loading");
+      body.classList.add("is-ready");
+    }, 300);
   };
 
-  const sendHeight = () => {
-    const height = Math.ceil(document.documentElement.scrollHeight);
-    window.parent?.postMessage({ type: "resize", height }, "*");
+  const forcePlayback = async () => {
+    video.muted = true;
+    video.defaultMuted = true;
+    video.volume = 0;
+    video.playsInline = true;
+    video.setAttribute("muted", "");
+    video.setAttribute("playsinline", "");
+    try {
+      await video.play();
+      body.classList.remove("playback-blocked");
+      reveal();
+      return true;
+    } catch (_) {
+      body.classList.add("playback-blocked");
+      reveal();
+      return false;
+    }
   };
 
-  resizeCanvas();
-  drawField();
-  glitch();
-  scheduleGlitch();
+  video.addEventListener("loadeddata", forcePlayback, { once: true });
+  video.addEventListener("canplay", forcePlayback, { once: true });
+  video.addEventListener("playing", reveal);
+  video.addEventListener("error", () => {
+    body.classList.add("video-error");
+    reveal();
+  });
 
-  window.addEventListener("resize", () => {
-    resizeCanvas();
-    sendHeight();
-  }, { passive: true });
-
-  window.addEventListener("load", sendHeight, { once: true });
-  document.fonts?.ready.then(sendHeight);
-
-  if ("ResizeObserver" in window) {
-    new ResizeObserver(sendHeight).observe(document.documentElement);
+  if (video.readyState >= 2) forcePlayback();
+  else {
+    video.load();
+    window.setTimeout(forcePlayback, 900);
+    window.setTimeout(reveal, 2200);
   }
 
-  [120, 500, 1200].forEach((delay) => window.setTimeout(sendHeight, delay));
+  // Any user interaction gives blocked mobile browsers another chance.
+  const retry = () => forcePlayback();
+  document.addEventListener("pointerdown", retry, { once: true, passive: true });
+  document.addEventListener("touchstart", retry, { once: true, passive: true });
+
+  const schedulePulse = () => {
+    const delay = 12000 + Math.random() * 10000;
+    window.setTimeout(() => {
+      if (!body.classList.contains("is-leaving")) {
+        body.classList.add("pulse");
+        window.setTimeout(() => body.classList.remove("pulse"), 420);
+      }
+      schedulePulse();
+    }, delay);
+  };
+  schedulePulse();
+
+  button.addEventListener("click", (event) => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+    event.preventDefault();
+    body.classList.add("is-leaving");
+    window.setTimeout(() => {
+      window.top.location.href = SHOP_URL;
+    }, 190);
+  });
+
+  try {
+    window.parent.postMessage(
+      { type: "s6n-frame-ready", page: "landing", height: document.documentElement.scrollHeight },
+      "https://violenticon.com"
+    );
+  } catch (_) {}
 })();

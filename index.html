@@ -2,113 +2,124 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#080808">
-  <meta name="description" content="VIOLENT ICON — Beautiful things. Bad intentions.">
-  <title>VIOLENT ICON</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#050507">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="Corrupted goods. Limited objects. Permanent damage.">
+  <title>ＶＩＯＬＥＮＴ　ＩＣＯＮ — Shop the Drop</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <canvas id="field" aria-hidden="true"></canvas>
+<body class="is-loading">
+  <main class="transmission" id="transmission">
+    <video
+      class="world-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="poster.jpg"
+      aria-hidden="true">
+      <source src="landingvideo.mp4" type="video/mp4">
+    </video>
 
-  <div class="fx fx-rainbow fx-rainbow-a" aria-hidden="true"></div>
-  <div class="fx fx-rainbow fx-rainbow-b" aria-hidden="true"></div>
-  <div class="fx fx-rainbow fx-rainbow-c" aria-hidden="true"></div>
-  <div class="fx fx-noise" aria-hidden="true"></div>
-  <div class="fx fx-scanlines" aria-hidden="true"></div>
-  <div class="fx fx-sync-roll" aria-hidden="true"></div>
-  <div class="fx fx-vignette" aria-hidden="true"></div>
+    <div class="video-shade" aria-hidden="true"></div>
+    <div class="spectral-wash spectral-wash--cyan" aria-hidden="true"></div>
+    <div class="spectral-wash spectral-wash--magenta" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="vignette" aria-hidden="true"></div>
+    <div class="sync-tear" aria-hidden="true"></div>
 
-  <main class="site-shell">
-    <section class="hero" aria-labelledby="violent-icon-title">
-      <div class="signal-status" aria-hidden="true">
-        <span>TRANSMISSION ACTIVE</span>
-        <span class="status-light"></span>
-        <span>VI // 001</span>
-      </div>
+    <div class="boot-screen" id="bootScreen" aria-live="polite">
+      <span>ESTABLISHING TRANSMISSION</span><i></i>
+    </div>
 
-      <div class="sigil-stage" aria-hidden="true">
-        <div class="sigil-halo halo-a"></div>
-        <div class="sigil-halo halo-b"></div>
-        <div class="sigil-halo halo-c"></div>
+    <section class="hero" aria-label="ＶＩＯＬＥＮＴ　ＩＣＯＮ introduction">
+      <p class="status" id="statusText">TX-00 // SIGNAL LOCKED</p>
 
-        <svg class="sigil" viewBox="0 0 600 600" role="img" aria-label="Cyan neon Baphomet pentagram">
+      <div class="identity">
+        <svg class="sigil" viewBox="0 0 600 600" role="img" aria-label="Animated Baphomet sigil">
           <defs>
-            <filter id="blur40" x="-100%" y="-100%" width="300%" height="300%">
-              <feGaussianBlur stdDeviation="24"/>
-            </filter>
-            <filter id="blur18" x="-100%" y="-100%" width="300%" height="300%">
+            <filter id="baphomet-blur18" x="-100%" y="-100%" width="300%" height="300%">
               <feGaussianBlur stdDeviation="11"/>
             </filter>
-            <filter id="blur6" x="-100%" y="-100%" width="300%" height="300%">
+            <filter id="baphomet-blur6" x="-100%" y="-100%" width="300%" height="300%">
               <feGaussianBlur stdDeviation="4"/>
             </filter>
           </defs>
 
-          <g class="orbit orbit-a">
+          <g class="sigil-orbit">
             <circle cx="300" cy="300" r="255"/>
             <circle cx="300" cy="300" r="236"/>
           </g>
 
-          <g class="cyan-glow far" filter="url(#blur40)">
+          <g class="sigil-glow sigil-glow--magenta" filter="url(#baphomet-blur18)">
             <path d="M300 515 L155 69 L535 345 L65 345 L445 69 Z"/>
             <circle cx="300" cy="300" r="225"/>
           </g>
 
-          <g class="cyan-glow mid" filter="url(#blur18)">
-            <path d="M300 515 L155 69 L535 345 L65 345 L445 69 Z"/>
-            <circle cx="300" cy="300" r="225"/>
+          <g class="sigil-glow sigil-glow--cyan" filter="url(#baphomet-blur6)">
+            <path d="M304 515 L159 69 L539 345 L69 345 L449 69 Z"/>
+            <circle cx="304" cy="300" r="225"/>
           </g>
 
-          <g class="magenta-fringe" filter="url(#blur6)">
-            <path d="M294 515 L149 69 L529 345 L59 345 L439 69 Z"/>
-            <circle cx="294" cy="300" r="225"/>
-          </g>
+          <g class="sigil-core">
+            <path class="sigil-tube sigil-draw" pathLength="1" d="M300 515 L155 69 L535 345 L65 345 L445 69 Z"/>
+            <circle class="sigil-tube sigil-draw sigil-delay-1" pathLength="1" cx="300" cy="300" r="225"/>
 
-          <g class="cyan-fringe" filter="url(#blur6)">
-            <path d="M306 515 L161 69 L541 345 L71 345 L451 69 Z"/>
-            <circle cx="306" cy="300" r="225"/>
-          </g>
+            <path class="sigil-tube sigil-thin sigil-draw sigil-delay-2" pathLength="1" d="M205 235 Q160 175 132 145 Q178 142 226 191"/>
+            <path class="sigil-tube sigil-thin sigil-draw sigil-delay-2" pathLength="1" d="M395 235 Q440 175 468 145 Q422 142 374 191"/>
 
-          <g class="neon-core">
-            <path class="tube draw" pathLength="1" d="M300 515 L155 69 L535 345 L65 345 L445 69 Z"/>
-            <circle class="tube draw d1" pathLength="1" cx="300" cy="300" r="225"/>
+            <path class="sigil-tube sigil-draw sigil-delay-3" pathLength="1" d="M205 230 Q220 315 300 430 Q380 315 395 230"/>
+            <path class="sigil-tube sigil-thin sigil-draw sigil-delay-3" pathLength="1" d="M205 230 Q260 265 300 250 Q340 265 395 230"/>
 
-            <path class="tube thin draw d2" pathLength="1" d="M205 235 Q160 175 132 145 Q178 142 226 191"/>
-            <path class="tube thin draw d2" pathLength="1" d="M395 235 Q440 175 468 145 Q422 142 374 191"/>
-
-            <path class="tube draw d3" pathLength="1" d="M205 230 Q220 315 300 430 Q380 315 395 230"/>
-            <path class="tube thin draw d3" pathLength="1" d="M205 230 Q260 265 300 250 Q340 265 395 230"/>
-
-            <path class="tube thin draw d4" pathLength="1" d="M230 285 Q255 260 280 287 Q255 314 230 285"/>
-            <path class="tube thin draw d4" pathLength="1" d="M370 285 Q345 260 320 287 Q345 314 370 285"/>
-            <path class="tube thin draw d4" pathLength="1" d="M300 250 L300 355"/>
-            <path class="tube thin draw d5" pathLength="1" d="M265 350 Q300 375 335 350"/>
-            <path class="tube thin draw d5" pathLength="1" d="M300 355 L270 408 M300 355 L330 408"/>
-            <path class="tube thin draw d5" pathLength="1" d="M210 232 Q178 270 190 330 Q208 380 270 408"/>
-            <path class="tube thin draw d5" pathLength="1" d="M390 232 Q422 270 410 330 Q392 380 330 408"/>
+            <path class="sigil-tube sigil-thin sigil-draw sigil-delay-4" pathLength="1" d="M230 285 Q255 260 280 287 Q255 314 230 285"/>
+            <path class="sigil-tube sigil-thin sigil-draw sigil-delay-4" pathLength="1" d="M370 285 Q345 260 320 287 Q345 314 370 285"/>
+            <path class="sigil-tube sigil-thin sigil-draw sigil-delay-4" pathLength="1" d="M300 250 L300 355"/>
+            <path class="sigil-tube sigil-thin sigil-draw sigil-delay-5" pathLength="1" d="M265 350 Q300 375 335 350"/>
+            <path class="sigil-tube sigil-thin sigil-draw sigil-delay-5" pathLength="1" d="M300 355 L270 408 M300 355 L330 408"/>
+            <path class="sigil-tube sigil-thin sigil-draw sigil-delay-5" pathLength="1" d="M210 232 Q178 270 190 330 Q208 380 270 408"/>
+            <path class="sigil-tube sigil-thin sigil-draw sigil-delay-5" pathLength="1" d="M390 232 Q422 270 410 330 Q392 380 330 408"/>
           </g>
         </svg>
+        <h1>⛧ <span>𝖘6𝖓6𝖋𝖌6𝖉</span> ⛧</h1>
+        <p class="manifesto">
+          <strong>CORRUPTED GOODS.</strong>
+          <strong>LIMITED OBJECTS.</strong>
+          <strong>PERMANENT DAMAGE.</strong>
+        </p>
       </div>
 
-      <h1 id="violent-icon-title" class="wordmark" data-text="ＶＩＯＬＥＮＴ　ＩＣＯＮ">
-        ＶＩＯＬＥＮＴ　ＩＣＯＮ
-      </h1>
-
-      <div class="manifesto" aria-label="Beautiful things. Bad intentions.">
-        <p>ＢＥＡＵＴＩＦＵＬ　ＴＨＩＮＧＳ</p>
-        <p>ＢＡＤ　ＩＮＴＥＮＴＩＯＮＳ</p>
-      </div>
-
-      <a class="shop-button" href="/collections/all" target="_top">
-        <span>ＳＨＯＰ　ＴＨＥ　ＤＲＯＰ</span>
-        <span class="button-arrow" aria-hidden="true">↗</span>
+      <a
+        class="drop-button"
+        id="dropButton"
+        href="https://violenticon.com/collections/all"
+        aria-label="Shop the drop">
+        <span class="drop-button__glitch" aria-hidden="true">ＳＨＯＰ　ＴＨＥ　ＤＲＯＰ</span>
+        <span class="drop-button__label">ＳＨＯＰ　ＴＨＥ　ＤＲＯＰ</span>
       </a>
 
-      <p class="footer-mark">ｖｉｏｌｅｎｔｉｃｏｎ．ｃｏｍ</p>
+      <p class="microcopy">OBJECTS RECOVERED FROM A FAILED LUXURY TRANSMISSION</p>
     </section>
+
+    <aside class="telemetry telemetry--left" aria-hidden="true">
+      <span>WATER LEVEL</span><b>06.66</b><em>RISING</em>
+    </aside>
+
+    <aside class="telemetry telemetry--right" aria-hidden="true">
+      <span>CHANNEL</span><b>S6N</b><em>UNAUTHORIZED</em>
+    </aside>
+
+    <div class="signal-failure" id="signalFailure" aria-hidden="true">
+      <span>//// SIGNAL FAILURE ////</span>
+    </div>
+
+    <noscript>
+      <div class="noscript">JavaScript is disabled. <a href="https://violenticon.com/collections/all">ＳＨＯＰ　ＴＨＥ　ＤＲＯＰ</a></div>
+    </noscript>
   </main>
 
-  <script src="./script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
