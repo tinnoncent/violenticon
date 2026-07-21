@@ -89,7 +89,7 @@
 
   try {
     window.parent.postMessage(
-      { type: "s6n-frame-ready", page: "landing", height: document.documentElement.scrollHeight },
+      { type: "violent-icon-frame-ready", page: "landing", height: document.documentElement.scrollHeight },
       "https://violenticon.com"
     );
   } catch (_) {}

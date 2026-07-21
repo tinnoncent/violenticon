@@ -1,20 +1,16 @@
-ＶＩＯＬＥＮＴ　ＩＣＯＮ V10.1 LANDING — BAPHOMET SIGIL REPLACEMENT
+VIOLENT ICON V10.1 LANDING — PRODUCTION UPDATE
 
-ONLY ONE DESIGN CHANGE WAS MADE:
-- The small geometric symbol above the ＶＩＯＬＥＮＴ　ＩＣＯＮ wordmark was removed.
-- It was replaced by the animated neon Baphomet sigil.
+Baseline: the supplied production V10.1 Baphomet landing packet.
 
-UNCHANGED:
-- Landing video
-- Layout
-- Copy
-- Button
-- CRT scanlines
-- Grain
-- Sync tear
-- Rainbow/spectral treatment
-- Vercel configuration
-- Fourthwall destination URL
+Changed only:
+- Primary wordmark: ＶＩＯＬＥＮＴ　ＩＣＯＮ
+- Manifesto: ＢＥＡＵＴＩＦＵＬ　ＴＨＩＮＧＳ / ＢＡＤ　ＩＮＴＥＮＴＩＯＮＳ
+- CTA: ＳＨＯＰ　ＴＨＥ　ＤＲＯＰ
+- Site title, metadata, accessibility labels, channel marker, shop links, and iframe origin updated to Violent Icon.
+- Wordmark font changed to clean tracked sans-serif.
 
-UPLOAD
-Replace the files in your existing V10.1 landing repository with every file in this folder.
+Preserved unchanged:
+- Flooded-mall video and poster
+- Cyan Baphomet sigil
+- Rainbow/spectral bands
+- CRT scanlines, grain, vignette, sync tear, boot sequence, telemetry, animations, layout, and interactions
