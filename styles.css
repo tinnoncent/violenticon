@@ -301,7 +301,7 @@ body.is-leaving .signal-failure{opacity:1;visibility:visible;animation:failure .
 body.is-leaving .world-video{animation:videoCollapse .2s steps(2) both}
 .noscript{position:absolute;z-index:100;inset:auto 20px 20px;padding:12px;background:#000}
 
-body.pulse .sync-tear{animation:syncRoll .34s linear both}
+body.pulse .sync-tear{animation:syncRoll 6s linear both}
 body.pulse .world-video{animation:microGlitch .34s steps(2) both}
 body.pulse .identity{animation:identityGlitch .34s steps(2) both}
 

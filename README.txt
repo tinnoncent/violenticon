@@ -16,3 +16,16 @@ Preserved unchanged:
 - CRT scanlines, grain, vignette, sync tear, boot sequence, telemetry, animations, layout, and interactions
 
 UPDATE: Replaced the text VIOLENT ICON heading with the supplied chromatic SVG wordmark only. All other page elements remain unchanged.
+
+
+BROWSER IDENTITY FIX
+- Added a dedicated chromatic VI favicon in SVG, ICO, 16px, 32px, and Apple Touch formats.
+- Added a VIOLENT ICON web manifest and iOS/browser application-name metadata.
+- Added cache-busting favicon URLs so the old star icon is not reused.
+- No page layout, visual effects, animation, copy, or interactions were changed.
+
+
+SLOW CRT SCANLINE UPDATE
+- Changed only the moving CRT sync-roll duration from 0.34 seconds to 6 seconds.
+- Extended the matching pulse state so the full slower animation can complete.
+- No other visuals, timing, layout, copy, effects, or interactions were changed.
