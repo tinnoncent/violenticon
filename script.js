@@ -66,17 +66,30 @@
   document.addEventListener("pointerdown", retry, { once: true, passive: true });
   document.addEventListener("touchstart", retry, { once: true, passive: true });
 
-  const schedulePulse = () => {
-    const delay = 12000 + Math.random() * 10000;
+  const scheduleOpticalShimmer = () => {
+    const delay = 14000 + Math.random() * 8000;
     window.setTimeout(() => {
       if (!body.classList.contains("is-leaving")) {
-        body.classList.add("pulse");
-        window.setTimeout(() => body.classList.remove("pulse"), 1900);
+        body.classList.add("optical-shimmer");
+        window.setTimeout(() => body.classList.remove("optical-shimmer"), 6000);
       }
-      schedulePulse();
+      scheduleOpticalShimmer();
     }, delay);
   };
-  schedulePulse();
+
+  const scheduleTrackingTick = () => {
+    const delay = 9000 + Math.random() * 10000;
+    window.setTimeout(() => {
+      if (!body.classList.contains("is-leaving")) {
+        body.classList.add("tracking-tick");
+        window.setTimeout(() => body.classList.remove("tracking-tick"), 190);
+      }
+      scheduleTrackingTick();
+    }, delay);
+  };
+
+  scheduleOpticalShimmer();
+  scheduleTrackingTick();
 
   button.addEventListener("click", (event) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;

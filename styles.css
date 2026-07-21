@@ -68,10 +68,28 @@ button,a{-webkit-tap-highlight-color:transparent}
   mix-blend-mode:soft-light;
 }
 .vignette{position:absolute;inset:0;z-index:22;pointer-events:none;box-shadow:inset 0 0 12vw rgba(0,0,0,.7),inset 0 0 2px rgba(230,214,176,.18)}
-.sync-tear{
-  position:absolute;left:-10%;right:-10%;top:-18%;height:12%;z-index:24;pointer-events:none;opacity:0;
-  background:linear-gradient(180deg,transparent,rgba(0,248,255,.14),rgba(255,255,255,.3),rgba(255,31,191,.16),transparent);
-  mix-blend-mode:screen;filter:blur(1px);
+.chromatic-shimmer{
+  position:absolute;
+  top:-12%;
+  bottom:-12%;
+  left:-34%;
+  width:30%;
+  z-index:24;
+  pointer-events:none;
+  opacity:0;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(0,248,255,.04) 24%,
+      rgba(255,255,255,.075) 48%,
+      rgba(255,31,191,.04) 72%,
+      transparent 100%
+    );
+  mix-blend-mode:screen;
+  filter:blur(22px);
+  transform:skewX(-10deg) translateX(0);
+  will-change:transform,opacity;
 }
 
 .hero{
@@ -170,16 +188,15 @@ button,a{-webkit-tap-highlight-color:transparent}
 
 .wordmark{
   width:min(94vw,980px);
-  aspect-ratio:1600/275;
-  overflow:hidden;
   display:block;
+  background:transparent;
 }
 
 .wordmark img{
   display:block;
   width:100%;
   height:auto;
-  transform:translateY(-4.5%);
+  background:transparent;
 }
 
 .manifesto{
@@ -301,9 +318,9 @@ body.is-leaving .signal-failure{opacity:1;visibility:visible;animation:failure .
 body.is-leaving .world-video{animation:videoCollapse .2s steps(2) both}
 .noscript{position:absolute;z-index:100;inset:auto 20px 20px;padding:12px;background:#000}
 
-body.pulse .sync-tear{animation:syncRoll 6s linear both}
-body.pulse .world-video{animation:microGlitch .34s steps(2) both}
-body.pulse .identity{animation:identityGlitch .34s steps(2) both}
+body.optical-shimmer .chromatic-shimmer{animation:chromaticSweep 5.8s cubic-bezier(.22,.61,.36,1) both}
+body.tracking-tick .world-video{animation:trackingTick .16s steps(2,end) both}
+body.tracking-tick .identity{animation:identityTick .16s steps(2,end) both}
 
 @keyframes grainShift{
   0%{transform:translate(0,0)}
@@ -317,9 +334,23 @@ body.pulse .identity{animation:identityGlitch .34s steps(2) both}
 @keyframes sigilSpin{to{transform:rotate(360deg)}}
 @keyframes blink{50%{opacity:0}}
 @keyframes labelGlitch{0%,100%{transform:translate(-2px,0)}50%{transform:translate(3px,1px)}}
-@keyframes syncRoll{0%{top:-18%;opacity:0}15%{opacity:.85}100%{top:108%;opacity:0}}
-@keyframes microGlitch{0%,100%{transform:scale(1.015);filter:saturate(1.12) contrast(1.08) brightness(.76)}35%{transform:scale(1.025) translateX(-4px);filter:saturate(1.35) contrast(1.18) brightness(.92) hue-rotate(7deg)}60%{transform:scale(1.02) translateX(3px);filter:saturate(.92) contrast(1.2) brightness(.68) hue-rotate(-8deg)}}
-@keyframes identityGlitch{0%,100%{transform:translateY(3vh)}35%{transform:translate(-3px,3vh)}60%{transform:translate(3px,3vh)}}
+@keyframes chromaticSweep{
+  0%{transform:skewX(-10deg) translateX(0);opacity:0}
+  16%{opacity:.28}
+  50%{opacity:.38}
+  84%{opacity:.2}
+  100%{transform:skewX(-10deg) translateX(560%);opacity:0}
+}15%{opacity:.85}100%{top:108%;opacity:0}}
+@keyframes trackingTick{
+  0%,100%{transform:scale(1.015) translateX(0)}
+  45%{transform:scale(1.015) translateX(-1px)}
+  70%{transform:scale(1.015) translateX(1px)}
+}
+@keyframes identityTick{
+  0%,100%{transform:translateY(3vh) translateX(0)}
+  45%{transform:translateY(3vh) translateX(1px)}
+  70%{transform:translateY(3vh) translateX(-1px)}
+}
 @keyframes failure{0%{clip-path:inset(0)}30%{clip-path:inset(42% 0 38% 0)}60%{clip-path:inset(10% 0 72% 0)}100%{clip-path:inset(0)}}
 @keyframes videoCollapse{0%{transform:scale(1.015)}50%{transform:scaleX(1.12) scaleY(.03);filter:brightness(4) contrast(2)}100%{transform:scaleX(0) scaleY(.003);filter:brightness(8)}}
 
@@ -345,14 +376,19 @@ body.pulse .identity{animation:identityGlitch .34s steps(2) both}
   .identity{width:100%;transform:translateY(1.5vh);gap:8px}
   .sigil{transform:translateY(-10px)}
   .wordmark{
-    width:96vw;
-    aspect-ratio:1600/275;
+    width:92vw;
   }
-  .wordmark img{transform:translateY(-4.5%)}
+  .wordmark img{transform:none}
   .manifesto{gap:2px;letter-spacing:.18em;line-height:1.28}
   .drop-button{padding:15px 22px;letter-spacing:.22em;margin-bottom:12px}
   .microcopy{font-size:6.5px;letter-spacing:.12em}
-  body.pulse .identity{animation:none}
+  body.tracking-tick .identity{animation:identityTickMobile .16s steps(2,end) both}
+}
+
+@keyframes identityTickMobile{
+  0%,100%{transform:translateY(1.5vh) translateX(0)}
+  45%{transform:translateY(1.5vh) translateX(1px)}
+  70%{transform:translateY(1.5vh) translateX(-1px)}
 }
 
 @media (prefers-reduced-motion:reduce){

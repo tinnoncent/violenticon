@@ -35,3 +35,11 @@ CORRECTION
 - Removed the oversized SVG canvas that appeared as a dark rectangular strip.
 - Changed the sync-roll from 6 seconds to 1.8 seconds and matched the pulse timeout.
 - Header, video, Baphomet, manifesto, CTA, layout, and all other effects remain unchanged.
+
+
+OPTICAL EFFECT STACK
+- Removed the moving CRT sync-roll bar completely.
+- Preserved the static scanline texture, film grain, vignette/curvature, and existing color treatment.
+- Added a restrained chromatic glass shimmer that crosses the image every 14–22 seconds.
+- Replaced the former heavy pulse glitch with a rare 1px horizontal tracking tick every 9–19 seconds.
+- No changes to branding, wordmarks, Baphomet, copy, CTA, video, layout, favicon, or navigation.
