@@ -29,3 +29,9 @@ SLOW CRT SCANLINE UPDATE
 - Changed only the moving CRT sync-roll duration from 0.34 seconds to 6 seconds.
 - Extended the matching pulse state so the full slower animation can complete.
 - No other visuals, timing, layout, copy, effects, or interactions were changed.
+
+CORRECTION
+- Replaced the hero image with a tight transparent wordmark-only SVG.
+- Removed the oversized SVG canvas that appeared as a dark rectangular strip.
+- Changed the sync-roll from 6 seconds to 1.8 seconds and matched the pulse timeout.
+- Header, video, Baphomet, manifesto, CTA, layout, and all other effects remain unchanged.

@@ -71,7 +71,7 @@
     window.setTimeout(() => {
       if (!body.classList.contains("is-leaving")) {
         body.classList.add("pulse");
-        window.setTimeout(() => body.classList.remove("pulse"), 6200);
+        window.setTimeout(() => body.classList.remove("pulse"), 1900);
       }
       schedulePulse();
     }, delay);
